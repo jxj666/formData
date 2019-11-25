@@ -3,7 +3,7 @@
  * @Author: jinxiaojian
  * @Email: jinxiaojian@youxin.com
  * @Date: 2019-11-22 15:36:52
- * @LastEditTime: 2019-11-25 11:12:38
+ * @LastEditTime: 2019-11-25 15:52:45
  * @LastEditors: 靳肖健
  -->
 <template>
@@ -13,10 +13,10 @@
     </el-header>
     <el-container>
       <el-header style="background:rgba(64, 158, 255,0.5);min-height:5vw;height:auto">
-        <DataSelect />
+        <DataSelect :dataArr="dataArr" @textareaChange="textareaChange" />
       </el-header>
       <el-main>
-        <DataArea />
+        <DataArea :textarea="textarea" />
       </el-main>
     </el-container>
   </el-container>
@@ -25,6 +25,7 @@
 <script>
 import DataArea from "../components/DataArea";
 import DataSelect from "../components/DataSelect";
+import dataArr from "../assets/data.js";
 
 export default {
   name: "Formdata",
@@ -34,13 +35,19 @@ export default {
   },
   props: {
     msg: String,
+    dataArr: dataArr,
   },
   data() {
     return {
       showDialog: 0,
+      textarea: "",
     };
   },
-  methods: {},
+  methods: {
+    textareaChange(val) {
+      this.textarea = val;
+    },
+  },
 };
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->

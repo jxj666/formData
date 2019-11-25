@@ -3,7 +3,7 @@
  * @Author: jinxiaojian
  * @Email: jinxiaojian@youxin.com
  * @Date: 2019-11-22 15:36:52
- * @LastEditTime: 2019-11-25 14:56:19
+ * @LastEditTime: 2019-11-25 15:53:51
  * @LastEditors: 靳肖健
  -->
 <template>
@@ -29,28 +29,26 @@ import DataForm from "./DataForm";
 
 export default {
   name: "DataArea",
-  props: {},
+  props: {
+    textarea: String,
+  },
   components: {
     DataForm,
   },
   data() {
     return {
       showDialog: 0,
-      str: `
-      <div>
-        <el-radio-group v-model="radio1">
-          <el-radio-button label="上海"></el-radio-button>
-          <el-radio-button label="北京"></el-radio-button>
-          <el-radio-button label="广州"></el-radio-button>
-          <el-radio-button label="深圳"></el-radio-button>
-        </el-radio-group>
-      </div>
-      `,
+      str: "",
     };
   },
   methods: {
     dialogShow() {
       this.showDialog = +new Date();
+    },
+  },
+  watch: {
+    textarea(val) {
+      this.str = decodeURI(val || "");
     },
   },
 };
