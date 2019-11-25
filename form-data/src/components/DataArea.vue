@@ -3,7 +3,7 @@
  * @Author: jinxiaojian
  * @Email: jinxiaojian@youxin.com
  * @Date: 2019-11-22 15:36:52
- * @LastEditTime: 2019-11-25 15:53:51
+ * @LastEditTime: 2019-11-25 17:12:12
  * @LastEditors: 靳肖健
  -->
 <template>
@@ -17,7 +17,11 @@
       ></el-input>
     </div>
     <div style="padding:1vw">
-      <el-button type="success">复制</el-button>
+      <el-button
+        type="success"
+        v-clipboard="()=>str"
+        v-clipboard:success="clipboardSuccessHandler"
+      >复制</el-button>
       <el-button type="primary" @click="dialogShow">录入</el-button>
     </div>
     <DataForm :showDialog="showDialog" />
@@ -44,6 +48,14 @@ export default {
   methods: {
     dialogShow() {
       this.showDialog = +new Date();
+    },
+    clipboardSuccessHandler({ value }) {
+      console.log("success", value);
+      const h = this.$createElement;
+      this.$notify({
+        title: "成功",
+        message: h("i", { style: "color: green" }, "复制成功!"),
+      });
     },
   },
   watch: {
