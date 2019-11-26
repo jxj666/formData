@@ -3,7 +3,7 @@
  * @Author: jinxiaojian
  * @Email: jinxiaojian@youxin.com
  * @Date: 2019-11-22 15:36:52
- * @LastEditTime: 2019-11-25 17:12:12
+ * @LastEditTime: 2019-11-25 19:52:22
  * @LastEditors: 靳肖健
  -->
 <template>
@@ -78,5 +78,6 @@ pre {
   background: rgba(0, 0, 0, 0.8);
   padding: 1vw;
   border-radius: 1vw;
+  word-break: break-all;
 }
 </style>

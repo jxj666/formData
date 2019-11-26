@@ -3,11 +3,11 @@
  * @Author: jinxiaojian
  * @Email: jinxiaojian@youxin.com
  * @Date: 2019-11-22 15:36:52
- * @LastEditTime: 2019-11-25 15:54:55
+ * @LastEditTime: 2019-11-26 10:51:13
  * @LastEditors: 靳肖健
  -->
 <template>
-  <div style="padding:1vw 1vw 0">
+  <div style="padding:1vw 1vw 0" class="dataSelect">
     <el-form ref="form" label-width="80px" label-position="left">
       <el-form-item label="模板类型">
         <el-radio-group v-model="type" size="small">
@@ -62,6 +62,10 @@ export default {
   },
 };
 </script>
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style lang="scss">
+.dataSelect {
+  .el-form-item__label {
+    color: #fff;
+  }
+}
 </style>

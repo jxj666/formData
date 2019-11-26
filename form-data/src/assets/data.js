@@ -3,12 +3,12 @@
  * @Author: jinxiaojian
  * @Email: jinxiaojian@youxin.com
  * @Date: 2019-11-25 11:59:29
- * @LastEditTime: 2019-11-25 19:34:54
+ * @LastEditTime: 2019-11-26 11:48:57
  * @LastEditors: 靳肖健
  */
 var dataArr = [
   { "type": "bd", "model": "fd多选框", "textarea": "%20%20%20%3Chfq-data-ele%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20:formObj=%22%7Btype:'checkbox',name:'is_hide',arr:%5B%7Blabel:'%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%9A%90%E8%97%8F%E6%A0%87%E9%A2%98',trueLabe:1,falseLabel:0%7D%5D%7D%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20:dataObj=%22formData%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3E%3C/hfq-data-ele%3E" },
-  { "type": "bd", "model": "fd输入", "textarea": "%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Chfq-data-ele%20:formObj=%22%7Btype:'input',name:'description'%7D%22%20:dataObj=%22formData%22%3E%3C/hfq-data-ele%3E%0A" },
+  { "type": "bd", "model": "fd输入", "textarea": "%3Chfq-data-ele%20:formObj=%22%7Btype:'',name:''%7D%22%20:dataObj=%22%7B%7D%22%3E%3C/hfq-data-ele%3E%0A" },
   { "type": "bd", "model": "fd日期时间", "textarea": "%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Chfq-data-ele%20:formObj=%22%7Btype:'datetime',name:'effected_at'%7D%22%20:dataObj=%22formData%22%3E%3C/hfq-data-ele%3E%0A" },
   { "type": "bd", "model": "fd选择", "textarea": "%20%20%20%20%3Chfq-data-ele%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20:formObj=%22%7Btype:'select',name:'style',disabled:dialogInfo.dialogType%20=='add'?null:'disabled',arr:styleList%7D%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20:dataObj=%22formData%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3E%3C/hfq-data-ele%3E" },
   { "type": "ym", "model": "cms页面", "textarea": "%3Ctemplate%3E%0A%20%20%3Ctab-page%20ref=%22tabPage%22%3E%0A%20%20%20%20%3Ctemplate%20slot=%22firstTabPage%22%3E%0A%0A%20%20%20%20%3C/template%3E%0A%20%20%3C/tab-page%3E%0A%3C/template%3E%0A%3Cstyle%3E%0A%3C/style%3E%0A%3Cscript%3E%0Aimport%20TabPage%20from%20%22@/components/TabPage%22;%0Aimport%20Common%20from%20%22@/utils/common%22;%0Aexport%20default%20%7B%0A%20%20data()%20%7B%0A%20%20%20%20return%20%7B%7D;%0A%20%20%7D,%0A%20%20components:%20%7B%0A%20%20%20%20TabPage,%0A%20%20%7D,%0A%20%20mounted()%20%7B%0A%20%20%20%20var%20defaultPage%20=%20%7B%0A%20%20%20%20%20%20label:%20%22%22,%0A%20%20%20%20%20%20name:%20%22default%22,%0A%20%20%20%20%20%20slotName:%20%22firstTabPage%22,%0A%20%20%20%20%20%20closable:%20false,%0A%20%20%20%20%7D;%0A%20%20%20%20this.$refs.tabPage.$emit(%22open-tab%22,%20defaultPage);%0A%20%20%7D,%0A%20%20methods:%20%7B%7D,%0A%7D;%0A%3C/script%3E" },
