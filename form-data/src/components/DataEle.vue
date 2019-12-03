@@ -3,13 +3,17 @@
  * @Author: jinxiaojian
  * @Email: jinxiaojian@youxin.com
  * @Date: 2019-11-25 10:59:46
- * @LastEditTime: 2019-12-03 15:49:50
+ * @LastEditTime: 2019-12-03 16:56:44
  * @LastEditors: 靳肖健
  -->
 
 <template>
-  <el-row :gutter="10" style="margin:1vw">
-    <el-col :span="12">
+  <el-row :gutter="10" style="margin:1vw;min-width:666px">
+    <el-col :span="12" style="background:#eee;padding:1vw">
+      <div>
+        <h3>参数配置区</h3>
+        <div class="h_1"></div>
+      </div>
       <el-form label-position="left" label-width="100px">
         <el-form-item label="表单父对象">
           <el-input size="small" type="input" placeholder="请输入内容" v-model="form.parent"></el-input>
@@ -54,14 +58,33 @@
             </el-form-item>
           </div>
         </div>
+        <div>
+          <el-button type="warning" @click="initForm">表单重置</el-button>
+        </div>
+        <div class="h_1"></div>
+        <div>
+          <el-button type="danger" @click="clearStorage">清除暂存</el-button>
+          <el-button type="primary" @click="saveStorage">暂存代码</el-button>
+        </div>
       </el-form>
     </el-col>
-    <el-col :span="12">
+    <el-col :span="12" style="background:#eee;padding:1vw">
+      <div>
+        <h3>代码展示区</h3>
+        <div class="h_1"></div>
+      </div>
       <el-input
         type="textarea"
         :autosize="{ minRows: 9, maxRows: 99}"
         placeholder="请输入内容"
         v-model="str"
+      ></el-input>
+      <div class="h_1"></div>
+      <el-input
+        type="textarea"
+        :autosize="{ minRows: 9, maxRows: 99}"
+        placeholder="暂存区域"
+        v-model="storage"
       ></el-input>
     </el-col>
   </el-row>
@@ -73,6 +96,7 @@ export default {
   props: [],
   data() {
     return {
+      storage: "",
       form: {},
       typeList: [],
     };
@@ -109,6 +133,12 @@ export default {
     },
   },
   methods: {
+    clearStorage() {
+      this.storage = "";
+    },
+    saveStorage() {
+      this.storage = this.storage + "\n" + this.str;
+    },
     getTypeList() {
       this.typeList = [
         { name: "选择框", value: "select" },
