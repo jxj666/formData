@@ -3,7 +3,7 @@
  * @Author: jinxiaojian
  * @Email: jinxiaojian@youxin.com
  * @Date: 2019-11-25 10:59:46
- * @LastEditTime: 2019-12-03 15:36:27
+ * @LastEditTime: 2019-12-03 15:41:33
  * @LastEditors: 靳肖健
  -->
 
@@ -92,7 +92,7 @@ export default {
       }
       if (k) {
         var html = `<hfq-data-ele 
-        :formObj="{
+        :formObj="{ 
           type:'${this.form.type}',
           name:'${this.form.name}',
           ${this.form.arr ? `arr: ${this.form.arr},` : ""}
