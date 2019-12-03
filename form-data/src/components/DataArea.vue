@@ -3,7 +3,7 @@
  * @Author: jinxiaojian
  * @Email: jinxiaojian@youxin.com
  * @Date: 2019-11-22 15:36:52
- * @LastEditTime: 2019-12-03 14:26:57
+ * @LastEditTime: 2019-12-03 20:35:21
  * @LastEditors: 靳肖健
  -->
 <template>
@@ -49,7 +49,7 @@ export default {
       this.showDialog = +new Date();
     },
     clipboardSuccessHandler({ value }) {
-      console.log("success", value);
+      console.log("复制", value);
       const h = this.$createElement;
       this.$notify({
         title: "成功",

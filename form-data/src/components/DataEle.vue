@@ -3,7 +3,7 @@
  * @Author: jinxiaojian
  * @Email: jinxiaojian@youxin.com
  * @Date: 2019-11-25 10:59:46
- * @LastEditTime: 2019-12-03 16:56:44
+ * @LastEditTime: 2019-12-03 20:58:12
  * @LastEditors: 靳肖健
  -->
 
@@ -23,6 +23,12 @@
             <el-input size="small" type="input" placeholder="请输入内容" v-model="form.label"></el-input>
           </el-tooltip>
         </el-form-item>
+        <el-form-item label="必填符号" v-if="form.label">
+          <el-radio-group v-model="form.required">
+            <el-radio-button label="false">否</el-radio-button>
+            <el-radio-button label="true">是</el-radio-button>
+          </el-radio-group>
+        </el-form-item>
         <el-form-item label="变量名">
           <el-input size="small" type="input" placeholder="请输入内容" v-model="form.name"></el-input>
         </el-form-item>
@@ -34,8 +40,9 @@
         <el-form-item label="失能条件">
           <el-input size="small" type="input" placeholder="请输入内容" v-model="form.disabled"></el-input>
         </el-form-item>
-        <el-form-item label="表单依赖">
-          <el-input size="small" type="input" placeholder="请输入内容" v-model="form.require"></el-input>
+
+        <el-form-item label="上一级级联">
+          <el-input size="small" type="input" placeholder="请输入内容" v-model="form.upLevel"></el-input>
         </el-form-item>
         <div>
           <div v-if=" form.type=='radio' || form.type=='checkbox' ">
@@ -60,6 +67,11 @@
         </div>
         <div>
           <el-button type="warning" @click="initForm">表单重置</el-button>
+          <el-button
+            type="success"
+            v-clipboard="()=>str"
+            v-clipboard:success="clipboardSuccessHandler"
+          >复制表单</el-button>
         </div>
         <div class="h_1"></div>
         <div>
@@ -119,9 +131,10 @@ export default {
         :formObj="{ 
           type:'${this.form.type}',
           name:'${this.form.name}',
-          ${this.form.arr ? `arr: ${this.form.arr},` : ""}
-          ${this.form.disabled ? `disabled: ${this.form.disabled},` : ""}
-          ${this.form.label ? `label: ${this.form.label},` : ""}
+          ${this.form.name ? `required: ${this.form.required},` : ``}
+          ${this.form.arr ? `arr: ${this.form.arr},` : ``}
+          ${this.form.disabled ? `disabled: ${this.form.disabled},` : ``}
+          ${this.form.label ? `label: '${this.form.label}',` : ``}
           }"
         :dataObj="${this.form.parent}" 
         ></hfq-data-ele>`;
@@ -133,6 +146,14 @@ export default {
     },
   },
   methods: {
+    clipboardSuccessHandler({ value }) {
+      console.log("复制", value);
+      const h = this.$createElement;
+      this.$notify({
+        title: "成功",
+        message: h("i", { style: "color: green" }, "复制成功!"),
+      });
+    },
     clearStorage() {
       this.storage = "";
     },
@@ -161,8 +182,9 @@ export default {
         name: "",
         parent: "",
         disabled: "",
-        require: "",
+        upLevel: "",
         label: "",
+        required: false,
       };
     },
     saveModel() {
