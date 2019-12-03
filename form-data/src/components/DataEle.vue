@@ -3,7 +3,7 @@
  * @Author: jinxiaojian
  * @Email: jinxiaojian@youxin.com
  * @Date: 2019-11-25 10:59:46
- * @LastEditTime: 2019-12-03 12:05:06
+ * @LastEditTime: 2019-12-03 14:47:25
  * @LastEditors: 靳肖健
  -->
 
@@ -11,7 +11,7 @@
   <el-row :gutter="10" style="margin:1vw">
     <el-col :span="12">
       <el-form label-position="left" label-width="100px">
-        <el-form-item label="表单父对象" require>
+        <el-form-item label="表单父对象">
           <el-input size="small" type="input" placeholder="请输入内容" v-model="form.parent"></el-input>
         </el-form-item>
         <el-form-item label="变量名">
@@ -24,6 +24,9 @@
         </el-form-item>
         <el-form-item label="失能条件">
           <el-input size="small" type="input" placeholder="请输入内容" v-model="form.disabled"></el-input>
+        </el-form-item>
+        <el-form-item label="表单依赖">
+          <el-input size="small" type="input" placeholder="请输入内容" v-model="form.require"></el-input>
         </el-form-item>
         <div>
           <div v-if=" form.type=='radio' || form.type=='checkbox' ">
@@ -39,7 +42,7 @@
             </el-form-item>
           </div>
           <div v-if="form.type=='select' ">
-            <el-form-item label="数组名">
+            <el-form-item label="数组名/数组">
               <el-tooltip
                 class="item"
                 effect="dark"
@@ -125,6 +128,7 @@ export default {
         name: "",
         parent: "",
         disabled: "",
+        require: "",
       };
     },
     saveModel() {

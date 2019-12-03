@@ -3,7 +3,7 @@
  * @Author: jinxiaojian
  * @Email: jinxiaojian@youxin.com
  * @Date: 2019-11-22 15:36:52
- * @LastEditTime: 2019-11-25 19:52:22
+ * @LastEditTime: 2019-12-03 14:26:57
  * @LastEditors: 靳肖健
  -->
 <template>
@@ -27,7 +27,6 @@
     <DataForm :showDialog="showDialog" />
   </div>
 </template>
-
 <script>
 import DataForm from "./DataForm";
 
