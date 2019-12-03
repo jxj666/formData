@@ -3,7 +3,7 @@
  * @Author: jinxiaojian
  * @Email: jinxiaojian@youxin.com
  * @Date: 2019-11-25 10:59:46
- * @LastEditTime: 2019-12-03 15:41:33
+ * @LastEditTime: 2019-12-03 15:49:50
  * @LastEditors: 靳肖健
  -->
 
@@ -16,7 +16,7 @@
         </el-form-item>
         <el-form-item label="变量标题">
           <el-tooltip class="item" content="决定是否有表单标题(可选)">
-            <el-input size="small" type="input" placeholder="请输入内容" v-model="form.title"></el-input>
+            <el-input size="small" type="input" placeholder="请输入内容" v-model="form.label"></el-input>
           </el-tooltip>
         </el-form-item>
         <el-form-item label="变量名">
@@ -97,7 +97,7 @@ export default {
           name:'${this.form.name}',
           ${this.form.arr ? `arr: ${this.form.arr},` : ""}
           ${this.form.disabled ? `disabled: ${this.form.disabled},` : ""}
-          ${this.form.title ? `title: ${this.form.title},` : ""}
+          ${this.form.label ? `label: ${this.form.label},` : ""}
           }"
         :dataObj="${this.form.parent}" 
         ></hfq-data-ele>`;
@@ -132,7 +132,7 @@ export default {
         parent: "",
         disabled: "",
         require: "",
-        title: "",
+        label: "",
       };
     },
     saveModel() {
