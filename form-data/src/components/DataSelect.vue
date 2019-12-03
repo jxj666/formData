@@ -3,7 +3,7 @@
  * @Author: jinxiaojian
  * @Email: jinxiaojian@youxin.com
  * @Date: 2019-11-22 15:36:52
- * @LastEditTime: 2019-11-26 10:51:13
+ * @LastEditTime: 2019-12-02 12:00:03
  * @LastEditors: 靳肖健
  -->
 <template>
@@ -63,9 +63,4 @@ export default {
 };
 </script>
 <style lang="scss">
-.dataSelect {
-  .el-form-item__label {
-    color: #fff;
-  }
-}
 </style>

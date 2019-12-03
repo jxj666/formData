@@ -3,7 +3,7 @@
  * @Author: jinxiaojian
  * @Email: jinxiaojian@youxin.com
  * @Date: 2019-11-22 15:36:52
- * @LastEditTime: 2019-11-26 10:46:54
+ * @LastEditTime: 2019-12-02 15:04:24
  * @LastEditors: 靳肖健
  -->
 <template>
@@ -12,12 +12,23 @@
       <h1 style="font-size:2vw;color:rgb(183, 195, 210)">formData辅助模板系统</h1>
     </el-header>
     <el-container>
-      <el-header style="background:rgb(50, 65, 87);min-height:5vw;height:auto">
-        <DataSelect :dataArr="dataArr" @textareaChange="textareaChange" />
-      </el-header>
-      <el-main>
-        <DataArea :textarea="textarea" />
-      </el-main>
+      <div style="width:100%">
+        <el-tabs style="padding:1vw" v-model="activeName" @tab-click="handleClick">
+          <el-tab-pane label="静态模板" name="first">静态模板</el-tab-pane>
+          <el-tab-pane label="HfqDataEle模板" name="second">HfqDataEle模板</el-tab-pane>
+        </el-tabs>
+        <el-container v-if="activeName=='first'">
+          <el-header style="min-height:5vw;height:auto">
+            <DataSelect :dataArr="dataArr" @textareaChange="textareaChange" />
+          </el-header>
+          <el-main>
+            <DataArea :textarea="textarea" />
+          </el-main>
+        </el-container>
+        <el-container v-else>
+          <DataEle />
+        </el-container>
+      </div>
     </el-container>
   </el-container>
 </template>
@@ -25,6 +36,7 @@
 <script>
 import DataArea from "../components/DataArea";
 import DataSelect from "../components/DataSelect";
+import DataEle from "../components/DataEle";
 import dataArr from "../assets/data.js";
 
 export default {
@@ -32,6 +44,7 @@ export default {
   components: {
     DataArea,
     DataSelect,
+    DataEle,
   },
   props: {
     msg: String,
@@ -41,15 +54,18 @@ export default {
     return {
       showDialog: 0,
       textarea: "",
+      activeName: "first",
     };
   },
   methods: {
+    handleClick(tab, event) {
+      console.log(tab, event);
+    },
     textareaChange(val) {
       this.textarea = val;
     },
   },
 };
 </script>
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
 </style>
