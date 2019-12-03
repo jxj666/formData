@@ -3,7 +3,7 @@
  * @Author: jinxiaojian
  * @Email: jinxiaojian@youxin.com
  * @Date: 2019-11-25 10:59:46
- * @LastEditTime: 2019-12-03 14:47:25
+ * @LastEditTime: 2019-12-03 15:36:27
  * @LastEditors: 靳肖健
  -->
 
@@ -13,6 +13,11 @@
       <el-form label-position="left" label-width="100px">
         <el-form-item label="表单父对象">
           <el-input size="small" type="input" placeholder="请输入内容" v-model="form.parent"></el-input>
+        </el-form-item>
+        <el-form-item label="变量标题">
+          <el-tooltip class="item" content="决定是否有表单标题(可选)">
+            <el-input size="small" type="input" placeholder="请输入内容" v-model="form.title"></el-input>
+          </el-tooltip>
         </el-form-item>
         <el-form-item label="变量名">
           <el-input size="small" type="input" placeholder="请输入内容" v-model="form.name"></el-input>
@@ -43,12 +48,7 @@
           </div>
           <div v-if="form.type=='select' ">
             <el-form-item label="数组名/数组">
-              <el-tooltip
-                class="item"
-                effect="dark"
-                content="数组结构应为: [{label:'选项名',value:'选项值'}]"
-                placement="top"
-              >
+              <el-tooltip class="item" content="数组结构应为: [{label:'选项名',value:'选项值'}]">
                 <el-input size="small" type="input" placeholder="请输入内容" v-model="form.arr"></el-input>
               </el-tooltip>
             </el-form-item>
@@ -96,8 +96,11 @@ export default {
           type:'${this.form.type}',
           name:'${this.form.name}',
           ${this.form.arr ? `arr: ${this.form.arr},` : ""}
-          ${this.form.disabled ? `disabled: ${this.form.disabled},` : ""}}"
-        :dataObj="${this.form.parent}" ></hfq-data-ele>`;
+          ${this.form.disabled ? `disabled: ${this.form.disabled},` : ""}
+          ${this.form.title ? `title: ${this.form.title},` : ""}
+          }"
+        :dataObj="${this.form.parent}" 
+        ></hfq-data-ele>`;
         var html2 = html.replace(/[\s\f\n\r]+/gim, " ");
         return html2;
       } else {
@@ -129,6 +132,7 @@ export default {
         parent: "",
         disabled: "",
         require: "",
+        title: "",
       };
     },
     saveModel() {
