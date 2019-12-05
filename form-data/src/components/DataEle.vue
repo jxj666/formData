@@ -3,7 +3,7 @@
  * @Author: jinxiaojian
  * @Email: jinxiaojian@youxin.com
  * @Date: 2019-11-25 10:59:46
- * @LastEditTime: 2019-12-05 16:32:12
+ * @LastEditTime: 2019-12-05 19:57:07
  * @LastEditors: 靳肖健
  -->
 
@@ -214,11 +214,11 @@ export default {
       var str = `{ 
           type:'${obj.type}',
           name:'${obj.name}',
-          ${obj.placeholder ? `placeholder: ${obj.placeholder},` : ``}
-          ${obj.label ? `required: ${obj.required},` : ``}
-          ${obj.arr ? `arr: ${obj.arr},` : ``}
-          ${obj.disabled ? `disabled: ${obj.disabled},` : ``}
-          ${obj.label ? `label: '${obj.label}',` : ``}
+          placeholder: ${obj.placeholder || null},
+          required: ${obj.required || null},
+          arr: ${obj.arr || null},
+          disabled: ${obj.disabled || null},
+          label: '${obj.label}',
           }
       `;
       var str2 = str.replace(/[\s\f\n\r]+/gim, " ");

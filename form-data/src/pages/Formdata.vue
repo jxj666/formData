@@ -3,7 +3,7 @@
  * @Author: jinxiaojian
  * @Email: jinxiaojian@youxin.com
  * @Date: 2019-11-22 15:36:52
- * @LastEditTime: 2019-12-05 14:57:58
+ * @LastEditTime: 2019-12-05 16:33:08
  * @LastEditors: 靳肖健
  -->
 <template>
@@ -58,7 +58,7 @@ export default {
     return {
       showDialog: 0,
       textarea: "",
-      activeName: "elemb",
+      activeName: "jtmb",
     };
   },
   methods: {
