@@ -3,7 +3,7 @@
  * @Author: jinxiaojian
  * @Email: jinxiaojian@youxin.com
  * @Date: 2019-11-25 10:59:46
- * @LastEditTime: 2019-12-05 15:53:18
+ * @LastEditTime: 2019-12-05 16:32:12
  * @LastEditors: 靳肖健
  -->
 
@@ -89,8 +89,8 @@
             <el-button type="primary" @click="saveArr" v-if="type=='arrmb'">添加本条</el-button>
             <el-button
               type="success"
-              v-clipboard="()=>str"
-              v-clipboard:success="clipboardSuccessHandler"
+              v-clipboard="()=>formArrText.text"
+              v-clipboard:success="clipboardSuccessHandler2"
               v-if="type=='arrmb'"
             >复制总表单</el-button>
           </div>
@@ -126,7 +126,7 @@
           type="textarea"
           :autosize="{ minRows: 9, maxRows: 99}"
           placeholder="总结构代码"
-          v-model="formArrText"
+          v-model="formArrText.text"
         ></el-input>
       </div>
     </el-col>
@@ -139,8 +139,10 @@ export default {
   props: ["type"],
   data() {
     return {
-      formArr: [],
-      formArrText: "",
+      formArrText: {
+        pre: "",
+        text: "",
+      },
       storage: "",
       form: {},
       typeList: [],
@@ -184,6 +186,14 @@ export default {
     },
   },
   methods: {
+    clipboardSuccessHandler2({ value }) {
+      console.log("复制", value);
+      const h = this.$createElement;
+      this.$notify({
+        title: "成功",
+        message: h("i", { style: "color: green" }, "复制成功!"),
+      });
+    },
     clipboardSuccessHandler({ value }) {
       console.log("复制", value);
       const h = this.$createElement;
@@ -198,19 +208,24 @@ export default {
     saveStorage() {
       this.storage = this.storage + "\n" + this.str;
     },
-    refresh() {
-      this.formArrText = JSON.stringify(this.formArr);
-    },
+
     saveArr() {
       var obj = JSON.parse(JSON.stringify(this.form));
-      var i;
-      for (i in obj) {
-        if (obj[i] == "") {
-          obj[i] = undefined;
-        }
-      }
-      this.formArr.push(JSON.parse(JSON.stringify(obj)));
-      this.refresh();
+      var str = `{ 
+          type:'${obj.type}',
+          name:'${obj.name}',
+          ${obj.placeholder ? `placeholder: ${obj.placeholder},` : ``}
+          ${obj.label ? `required: ${obj.required},` : ``}
+          ${obj.arr ? `arr: ${obj.arr},` : ``}
+          ${obj.disabled ? `disabled: ${obj.disabled},` : ``}
+          ${obj.label ? `label: '${obj.label}',` : ``}
+          }
+      `;
+      var str2 = str.replace(/[\s\f\n\r]+/gim, " ");
+      this.formArrText.pre = `${
+        this.formArrText.pre ? `${this.formArrText.pre},` : ""
+      }${str2}`;
+      this.formArrText.text = `[${this.formArrText.pre}]`;
     },
     getTypeList() {
       this.typeList = [
