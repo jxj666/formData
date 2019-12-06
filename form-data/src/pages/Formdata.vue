@@ -3,7 +3,7 @@
  * @Author: jinxiaojian
  * @Email: jinxiaojian@youxin.com
  * @Date: 2019-11-22 15:36:52
- * @LastEditTime: 2019-12-05 16:33:08
+ * @LastEditTime: 2019-12-05 20:55:18
  * @LastEditors: 靳肖健
  -->
 <template>
@@ -16,7 +16,7 @@
         <el-tabs style="padding:1vw" v-model="activeName" @tab-click="handleClick">
           <el-tab-pane label="静态模板" name="jtmb">静态模板</el-tab-pane>
           <el-tab-pane label="HfqDataEle模板" name="elemb">HfqDataEle模板</el-tab-pane>
-          <el-tab-pane label="HfqDataFrom模板" name="arrmb">HfqDataFrom模板</el-tab-pane>
+          <el-tab-pane label="HfqDataFrom模板" name="arrmb">HfqDataEle连写模板</el-tab-pane>
         </el-tabs>
         <el-container v-if="activeName=='jtmb'">
           <el-header style="min-height:5vw;height:auto">

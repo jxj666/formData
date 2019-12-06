@@ -3,7 +3,7 @@
  * @Author: jinxiaojian
  * @Email: jinxiaojian@youxin.com
  * @Date: 2019-11-25 10:59:46
- * @LastEditTime: 2019-12-05 19:57:07
+ * @LastEditTime: 2019-12-05 21:01:14
  * @LastEditors: 靳肖健
  -->
 
@@ -20,6 +20,9 @@
       </div>
       <div>
         <el-form label-position="left" label-width="110px">
+          <el-form-item label="表单数据对象" v-if="type=='arrmb'" required>
+            <el-input size="small" type="input" placeholder="请输入内容" v-model="dataObj"></el-input>
+          </el-form-item>
           <el-form-item label="表单数据对象" v-if="type=='elemb'" required>
             <el-input size="small" type="input" placeholder="请输入内容" v-model="form.parent"></el-input>
           </el-form-item>
@@ -103,17 +106,14 @@
         <h3>代码展示区</h3>
         <div class="h_1"></div>
       </div>
-      <div>
+      <div v-if="type=='elemb'">
         <el-input
           type="textarea"
           :autosize="{ minRows: 9, maxRows: 99}"
           placeholder="当前配置代码展示"
           v-model="str"
-          v-if="type=='elemb'"
         ></el-input>
         <div class="h_1"></div>
-      </div>
-      <div v-if="type=='elemb'">
         <el-input
           type="textarea"
           :autosize="{ minRows: 9, maxRows: 99}"
@@ -128,6 +128,13 @@
           placeholder="总结构代码"
           v-model="formArrText.text"
         ></el-input>
+        <div class="h_1"></div>
+        <el-input
+          type="textarea"
+          :autosize="{ minRows: 9, maxRows: 99}"
+          placeholder="template代码"
+          v-model="formArrText.code"
+        ></el-input>
       </div>
     </el-col>
   </el-row>
@@ -139,9 +146,11 @@ export default {
   props: ["type"],
   data() {
     return {
+      dataObj: "",
       formArrText: {
         pre: "",
         text: "",
+        code: "",
       },
       storage: "",
       form: {},
@@ -212,20 +221,31 @@ export default {
     saveArr() {
       var obj = JSON.parse(JSON.stringify(this.form));
       var str = `{ 
+          label: '${obj.label}',
           type:'${obj.type}',
           name:'${obj.name}',
           placeholder: ${obj.placeholder || null},
           required: ${obj.required || null},
           arr: ${obj.arr || null},
           disabled: ${obj.disabled || null},
-          label: '${obj.label}',
           }
       `;
       var str2 = str.replace(/[\s\f\n\r]+/gim, " ");
       this.formArrText.pre = `${
         this.formArrText.pre ? `${this.formArrText.pre},` : ""
-      }${str2}`;
-      this.formArrText.text = `[${this.formArrText.pre}]`;
+      }
+      ${str2}`;
+      this.formArrText.text = `
+      [${this.formArrText.pre}]
+        `;
+      this.formArrText.code = `
+        <HfqDataEle
+          v-for="x,index in ${this.formArrText.text}"
+          :key="index"
+          :formObj="x"
+          :dataObj="${this.dataObj}"
+        />
+      `;
     },
     getTypeList() {
       this.typeList = [

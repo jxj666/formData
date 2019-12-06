@@ -3,7 +3,7 @@
  * @Author: jinxiaojian
  * @Email: jinxiaojian@youxin.com
  * @Date: 2019-11-22 15:14:23
- * @LastEditTime: 2019-11-22 16:49:21
+ * @LastEditTime: 2019-12-06 10:24:22
  * @LastEditors: 靳肖健
  -->
 <template>
@@ -26,4 +26,7 @@ export default {
 
 <style lang='scss'>
 @import "./assets/reset.scss";
+#app {
+  background: #eee;
+}
 </style>
