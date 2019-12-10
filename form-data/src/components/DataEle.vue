@@ -3,7 +3,7 @@
  * @Author: jinxiaojian
  * @Email: jinxiaojian@youxin.com
  * @Date: 2019-11-25 10:59:46
- * @LastEditTime: 2019-12-06 14:51:26
+ * @LastEditTime: 2019-12-10 11:21:15
  * @LastEditors: 靳肖健
  -->
 
@@ -136,6 +136,11 @@
           v-model="formArrText.code"
         ></el-input>
       </div>
+      <div style="margin:1vw">
+        <pre>
+import HfqDataEle from "@/components/common/HfqDataEle";
+        </pre>
+      </div>
     </el-col>
   </el-row>
 </template>
@@ -251,6 +256,7 @@ export default {
     },
     getTypeList() {
       this.typeList = [
+        { name: "文字input", value: "input" },
         { name: "选择框select", value: "select" },
         { name: "单选框radio", value: "radio" },
         { name: "多选框checkbox", value: "checkbox" },
@@ -258,7 +264,6 @@ export default {
         { name: "时间time", value: "time" },
         { name: "日期date", value: "date" },
         { name: "日期时间datetime", value: "datetime" },
-        { name: "文字input", value: "input" },
         { name: "数字number", value: "number" },
         { name: "文本textarea", value: "textarea" },
         { name: "网址url", value: "url" },
@@ -267,7 +272,7 @@ export default {
     initForm() {
       this.form = {
         arr: "",
-        type: "",
+        type: "input",
         name: "",
         parent: "",
         disabled: "",
