@@ -3,7 +3,7 @@
  * @Author: jinxiaojian
  * @Email: jinxiaojian@youxin.com
  * @Date: 2019-11-25 10:59:46
- * @LastEditTime: 2019-12-05 21:01:14
+ * @LastEditTime: 2019-12-06 14:51:26
  * @LastEditors: 靳肖健
  -->
 
@@ -182,6 +182,7 @@ export default {
           }
           ${this.form.label ? `required: ${this.form.required},` : ``}
           ${this.form.arr ? `arr: ${this.form.arr},` : ``}
+          ${this.form.upLevel ? `upLevel: ${this.form.upLevel},` : ``}
           ${this.form.disabled ? `disabled: ${this.form.disabled},` : ``}
           ${this.form.label ? `label: '${this.form.label}',` : ``}
           }"
@@ -228,6 +229,7 @@ export default {
           required: ${obj.required || null},
           arr: ${obj.arr || null},
           disabled: ${obj.disabled || null},
+          upLevel: ${obj.upLevel || null},
           }
       `;
       var str2 = str.replace(/[\s\f\n\r]+/gim, " ");
@@ -249,17 +251,17 @@ export default {
     },
     getTypeList() {
       this.typeList = [
-        { name: "选择框", value: "select" },
-        { name: "单选框", value: "radio" },
-        { name: "多选框", value: "checkbox" },
-        { name: "数字框", value: "inputNumber" },
-        { name: "时间", value: "time" },
-        { name: "日期", value: "date" },
-        { name: "日期时间", value: "datetime" },
-        { name: "文字", value: "input" },
-        { name: "数字", value: "number" },
-        { name: "文本", value: "textarea" },
-        { name: "网址", value: "url" },
+        { name: "选择框select", value: "select" },
+        { name: "单选框radio", value: "radio" },
+        { name: "多选框checkbox", value: "checkbox" },
+        { name: "数字框inputNumber", value: "inputNumber" },
+        { name: "时间time", value: "time" },
+        { name: "日期date", value: "date" },
+        { name: "日期时间datetime", value: "datetime" },
+        { name: "文字input", value: "input" },
+        { name: "数字number", value: "number" },
+        { name: "文本textarea", value: "textarea" },
+        { name: "网址url", value: "url" },
       ];
     },
     initForm() {
