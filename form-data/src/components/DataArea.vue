@@ -3,11 +3,11 @@
  * @Author: jinxiaojian
  * @Email: jinxiaojian@youxin.com
  * @Date: 2019-11-22 15:36:52
- * @LastEditTime: 2019-12-03 20:35:21
+ * @LastEditTime: 2019-12-10 19:53:00
  * @LastEditors: 靳肖健
  -->
 <template>
-  <div style="width:100%;height:50vh;">
+  <div style="width:100%;min-height:50vh;">
     <div>
       <el-input
         type="textarea"
