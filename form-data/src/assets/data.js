@@ -3,11 +3,12 @@
  * @Author: jinxiaojian
  * @Email: jinxiaojian@youxin.com
  * @Date: 2019-11-25 11:59:29
- * @LastEditTime: 2019-12-13 16:37:06
- * @LastEditors: 靳肖健
+ * @LastEditTime : 2019-12-18 15:47:51
+ * @LastEditors  : 靳肖健
  */
 var dataArr = [
   { "type": "bd", "model": "fd多选框", "textarea": "%20%20%20%3Chfq-data-ele%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20:formObj=%22%7Btype:'checkbox',name:'is_hide',arr:%5B%7Blabel:'%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%9A%90%E8%97%8F%E6%A0%87%E9%A2%98',trueLabe:1,falseLabel:0%7D%5D%7D%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20:dataObj=%22formData%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3E%3C/hfq-data-ele%3E" },
+  { "type": "js", "model": "Mock.mock", "textarea": "Mock.mock('/api/test',%20%7B%0A%20%20%22code%22:%200,%0A%20%20%22res%22:%20%7B%7D,%0A%20%20%22data%22:%20%7B%7D%0A%7D);" },
   { "type": "bd", "model": "fd输入", "textarea": "%3Chfq-data-ele%20:formObj=%22%7Btype:'',name:''%7D%22%20:dataObj=%22%7B%7D%22%3E%3C/hfq-data-ele%3E%0A" },
   { "type": "bd", "model": "fd日期时间", "textarea": "%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Chfq-data-ele%20:formObj=%22%7Btype:'datetime',name:'effected_at'%7D%22%20:dataObj=%22formData%22%3E%3C/hfq-data-ele%3E%0A" },
   { "type": "bd", "model": "fd选择", "textarea": "%20%20%20%20%3Chfq-data-ele%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20:formObj=%22%7Btype:'select',name:'style',disabled:dialogInfo.dialogType%20=='add'?null:'disabled',arr:styleList%7D%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20:dataObj=%22formData%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3E%3C/hfq-data-ele%3E" },
