@@ -3,8 +3,8 @@
  * @Author: jinxiaojian
  * @Email: jinxiaojian@youxin.com
  * @Date: 2019-11-25 10:59:46
- * @LastEditTime: 2019-12-10 11:21:15
- * @LastEditors: 靳肖健
+ * @LastEditTime : 2020-01-14 18:01:08
+ * @LastEditors  : 靳肖健
  -->
 
 <template>
@@ -79,7 +79,7 @@
               </el-form-item>
             </div>
           </div>
-          <div>
+          <div v-if="logined">
             <el-button type="warning" @click="initForm">表单重置</el-button>
             <el-button
               type="success"
@@ -148,7 +148,7 @@ import HfqDataEle from "@/components/common/HfqDataEle";
 
 <script>
 export default {
-  props: ["type"],
+  props: ["type", "logined"],
   data() {
     return {
       dataObj: "",

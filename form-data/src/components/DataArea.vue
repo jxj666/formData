@@ -3,8 +3,8 @@
  * @Author: jinxiaojian
  * @Email: jinxiaojian@youxin.com
  * @Date: 2019-11-22 15:36:52
- * @LastEditTime: 2019-12-10 19:53:00
- * @LastEditors: 靳肖健
+ * @LastEditTime : 2020-01-14 18:02:00
+ * @LastEditors  : 靳肖健
  -->
 <template>
   <div style="width:100%;min-height:50vh;">
@@ -16,7 +16,7 @@
         v-model="str"
       ></el-input>
     </div>
-    <div style="padding:1vw">
+    <div style="padding:1vw" v-if="logined">
       <el-button
         type="success"
         v-clipboard="()=>str"
@@ -29,11 +29,11 @@
 </template>
 <script>
 import DataForm from "./DataForm";
-
 export default {
   name: "DataArea",
   props: {
     textarea: String,
+    logined: Number,
   },
   components: {
     DataForm,
