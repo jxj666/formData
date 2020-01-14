@@ -3,7 +3,7 @@
  * @Author: jinxiaojian
  * @Email: jinxiaojian@youxin.com
  * @Date: 2019-11-22 15:36:52
- * @LastEditTime : 2020-01-14 19:44:56
+ * @LastEditTime : 2020-01-14 19:55:51
  * @LastEditors  : 靳肖健
  -->
 <template>
@@ -93,7 +93,7 @@ export default {
       var that = this;
       axios({
         method: "get",
-        url: `/php/content.php`,
+        url: `./../php/content.php`,
       })
         .then(function(res) {
           console.log(res.data);
@@ -114,7 +114,7 @@ export default {
       var that = this;
       axios({
         method: "get",
-        url: `/php/login.php?u=${this.formLogin.user}&p=${this.formLogin.password}`,
+        url: `./../php/login.php?u=${this.formLogin.user}&p=${this.formLogin.password}`,
       })
         .then(function(res) {
           console.log(res.data);
