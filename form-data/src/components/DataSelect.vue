@@ -3,8 +3,8 @@
  * @Author: jinxiaojian
  * @Email: jinxiaojian@youxin.com
  * @Date: 2019-11-22 15:36:52
- * @LastEditTime: 2019-12-02 12:00:03
- * @LastEditors: 靳肖健
+ * @LastEditTime : 2020-01-15 14:59:51
+ * @LastEditors  : 靳肖健
  -->
 <template>
   <div style="padding:1vw 1vw 0" class="dataSelect">
@@ -12,7 +12,6 @@
       <el-form-item label="模板类型">
         <el-radio-group v-model="type" size="small">
           <el-radio-button label="ym">页面</el-radio-button>
-          <el-radio-button label="bd">表单</el-radio-button>
           <el-radio-button label="ajax">ajax</el-radio-button>
           <el-radio-button label="js">JavaScript</el-radio-button>
         </el-radio-group>
@@ -31,7 +30,7 @@
 </template>
 
 <script>
-import dataArr from "../assets/data";
+// import dataArr from "../assets/data";
 export default {
   name: "DataSelect",
   props: {
@@ -50,7 +49,7 @@ export default {
   watch: {
     type(val) {
       console.log(val);
-      var arr = dataArr.filter(x => {
+      var arr = this.dataArr.filter(x => {
         return x.type == val;
       });
       this.textarea = "";

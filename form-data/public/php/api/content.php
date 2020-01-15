@@ -4,13 +4,13 @@
  * @Author: jinxiaojian
  * @Email: jinxiaojian@youxin.com
  * @Date: 2020-01-14 16:38:40
- * @LastEditTime : 2020-01-14 18:19:20
+ * @LastEditTime : 2020-01-15 14:25:34
  * @LastEditors  : 靳肖健
  */
 header("Access-Control-Allow-Origin: *");
 // 连主库
 session_start();
-if (!$_SESSION) {
+if (!$_SESSION && !$_SESSION['code']) {
 	exit('{"code":0,"msg":"非法操作!","$_SESSION":"1814"}');
 }
 //$conn = mysqli_connect('路径'.':'.'端口','账号','密码','库名');

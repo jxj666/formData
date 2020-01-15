@@ -1,13 +1,22 @@
 <?php
+/*
+ * @Description: 
+ * @Author: jinxiaojian
+ * @Email: jinxiaojian@youxin.com
+ * @Date: 2020-01-15 11:25:15
+ * @LastEditTime : 2020-01-15 14:36:55
+ * @LastEditors  : 靳肖健
+ */
 
 header("Access-Control-Allow-Origin: *"); 
-$u = isset($_POST["u"]) ? $_POST["u"] : '';
-$c = isset($_POST["c"]) ? $_POST["c"]: '';
-$a = isset($_POST["a"]) ? $_POST["a"] : '';
-$n = isset($_POST["n"]) ? $_POST["n"]: '';
-$i = isset($_POST["i"]) ? $_POST["i"]: '';
+// $type = isset($_POST["type"]) ? $_POST["type"] : '';
+// $model = isset($_POST["model"]) ? $_POST["model"]: '';
+// $textarea = isset($_POST["textarea"]) ? $_POST["textarea"] : '';
+ $tmpData = strval(file_get_contents("php://input"));
+ $DataObj = json_decode($tmpData, true);
+
 session_start();
-if ($_SESSION['code']!=$u) {
+if (!$_SESSION && !$_SESSION['code']) {
 	exit('{"code":0,"msg":"非法操作!"}');
 }
  
@@ -21,7 +30,7 @@ if ($conn->connect_error) {
 } 
  
 
-$sql="INSERT INTO `form_data_code` (`id`, `user`, `num`, `content`, `address`, `address_id`, `name`, `info`) VALUES (NULL, '".$u."', '0', '".$c."', '".$a."', '', '".$n."','".$i."')";
+$sql="INSERT INTO `form_data_code` (`id`, `type`, `model`, `textarea`) VALUES (NULL, '".$DataObj['type']."',  '".$DataObj['model']."', '".$DataObj['textarea']."')";
 
 
 // echo ($sql);

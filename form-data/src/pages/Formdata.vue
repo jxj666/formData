@@ -3,7 +3,7 @@
  * @Author: jinxiaojian
  * @Email: jinxiaojian@youxin.com
  * @Date: 2019-11-22 15:36:52
- * @LastEditTime : 2020-01-15 11:26:34
+ * @LastEditTime : 2020-01-15 14:11:58
  * @LastEditors  : 靳肖健
  -->
 <template>
@@ -60,8 +60,8 @@
 import DataArea from "../components/DataArea";
 import DataSelect from "../components/DataSelect";
 import DataEle from "../components/DataEle";
-import dataArr from "../assets/data.js";
-import axios from "axios";
+// import dataArr from "../assets/data.js";
+import ajax from "../assets/ajax.js";
 
 export default {
   name: "Formdata",
@@ -72,11 +72,10 @@ export default {
   },
   props: {
     msg: String,
-    dataArr: dataArr,
   },
   data() {
     return {
-      baseUrl: "",
+      dataArr: [],
       logined: 0,
       btnText: "登录",
       formLogin: {
@@ -92,58 +91,32 @@ export default {
     this.start();
   },
   methods: {
-    start() {
-      if (location.host == "m.jxjweb.top") {
-        this.baseUrl = "./php/api";
-      } else {
-        this.baseUrl = "/api";
-      }
-    },
+    start() {},
     initList() {
-      var that = this;
-      axios({
-        method: "get",
-        url: `${this.baseUrl}/content.php`,
-      })
-        .then(function(res) {
-          console.log(res.data);
-          if (res.data.code == 1) {
-            console.log(res, that);
-          } else {
-            that.logined = 0;
-          }
-        })
-        .catch(function(error) {
-          // handle error
-          console.log(error);
-        })
-        .finally(function() {});
+      ajax({
+        that: this,
+        url: `/content.php`,
+        success: data => {
+          this.dataArr = data.content;
+        },
+      });
     },
     login_user() {
-      // Make a request for a user with a given ID
-      var that = this;
-      axios({
-        method: "get",
-        url: `${this.baseUrl}/login.php?u=${this.formLogin.user}&p=${this.formLogin.password}`,
-      })
-        .then(function(res) {
-          console.log(res.data);
-          if (res.data.code == 1) {
-            that.logined = 1;
-            that.initList();
-          } else {
-            that.logined = 0;
-            that.btnText = "登录失败";
-            setTimeout(() => {
-              that.btnText = "登录";
-            }, 1000);
-          }
-        })
-        .catch(function(error) {
-          // handle error
-          console.log(error);
-        })
-        .finally(function() {});
+      ajax({
+        that: this,
+        url: `/login.php?u=${this.formLogin.user}&p=${this.formLogin.password}`,
+        success: () => {
+          this.logined = 1;
+          this.initList();
+        },
+        error: () => {
+          this.logined = 0;
+          this.btnText = "登录失败";
+          setTimeout(() => {
+            this.btnText = "登录";
+          }, 1000);
+        },
+      });
     },
     handleClick(tab, event) {
       console.log(tab, event);
