@@ -1,6 +1,9 @@
 .DS_Store
 node_modules
 /node_modules
+dist
+/dist
+conn_sql.php
 
 
 # local env files
