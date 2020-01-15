@@ -1,20 +1,12 @@
 <?php
-/*
- * @Description: 
- * @Author: jinxiaojian
- * @Email: jinxiaojian@youxin.com
- * @Date: 2020-01-15 11:18:19
- * @LastEditTime : 2020-01-15 11:19:41
- * @LastEditors  : 靳肖健
- */
 
 header("Access-Control-Allow-Origin: *"); 
 $u = isset($_GET["u"]) ? $_GET["u"] : '';
 $p = isset($_GET["p"]) ? $_GET["p"]: '';
 session_start();
 
-
-// 连主库222
+ 
+// 连主库
 //$conn = mysqli_connect('路径'.':'.'端口','账号','密码','库名');
 include 'conn_sql.php';
 
@@ -24,8 +16,10 @@ if ($conn->connect_error) {
 } 
  
 
-$sql="SELECT * FROM form_data_user WHERE user = '".$u."' AND password='".$p."'";
- $result = $conn->query($sql);
+// $sql="SELECT * FROM form_data_user WHERE user = '".$u."' AND password='".$p."'";
+$sql = "INSERT INTO `form_data_user` (`id`, `user`, `password`, `content`, `time`) VALUES (NULL, '".$u."', '".$p."', '0', '0');";
+
+$result = $conn->query($sql);
 class Verify {
     public $code  = '00';
     public $user = '00';
@@ -33,7 +27,7 @@ class Verify {
 $verify = new Verify();
 $verify->user = $u;
 
-if ($result->num_rows > 0){
+if ($result){
 	$_SESSION['code'] = $u;
     $verify->code = 1;
 }else{

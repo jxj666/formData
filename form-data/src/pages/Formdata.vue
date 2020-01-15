@@ -3,7 +3,7 @@
  * @Author: jinxiaojian
  * @Email: jinxiaojian@youxin.com
  * @Date: 2019-11-22 15:36:52
- * @LastEditTime : 2020-01-14 19:55:51
+ * @LastEditTime : 2020-01-15 11:26:34
  * @LastEditors  : 靳肖健
  -->
 <template>
@@ -76,6 +76,7 @@ export default {
   },
   data() {
     return {
+      baseUrl: "",
       logined: 0,
       btnText: "登录",
       formLogin: {
@@ -87,13 +88,22 @@ export default {
       activeName: "jtmb",
     };
   },
-  created() {},
+  created() {
+    this.start();
+  },
   methods: {
+    start() {
+      if (location.host == "m.jxjweb.top") {
+        this.baseUrl = "./php/api";
+      } else {
+        this.baseUrl = "/api";
+      }
+    },
     initList() {
       var that = this;
       axios({
         method: "get",
-        url: `./../php/content.php`,
+        url: `${this.baseUrl}/content.php`,
       })
         .then(function(res) {
           console.log(res.data);
@@ -114,7 +124,7 @@ export default {
       var that = this;
       axios({
         method: "get",
-        url: `./../php/login.php?u=${this.formLogin.user}&p=${this.formLogin.password}`,
+        url: `${this.baseUrl}/login.php?u=${this.formLogin.user}&p=${this.formLogin.password}`,
       })
         .then(function(res) {
           console.log(res.data);
